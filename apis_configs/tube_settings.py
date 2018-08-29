@@ -50,4 +50,4 @@ HADOOP_URL = os.getenv('HADOOP_URL', 'http://spark:9000')
 ES_HADOOP_VERSION = os.getenv("ES_HADOOP_VERSION", "")
 ES_HADOOP_HOME_BIN = '{}/elasticsearch-hadoop-{}'.format(os.getenv("ES_HADOOP_HOME", ""), os.getenv("ES_HADOOP_VERSION", ""))
 HADOOP_HOST = os.getenv("HADOOP_HOST", "spark")
-
+MAPPING_FILE = os.getenv("MAPPING_FILE", "/tube/tube/mappings/niaid.yaml")
