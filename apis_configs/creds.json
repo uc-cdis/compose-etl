@@ -1,6 +1,0 @@
-{
-  "db_host": "host.docker.internal",
-  "db_username": "thanhnd",
-  "db_password": "thanhnd",
-  "db_database": "niaid"
-}
