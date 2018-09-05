@@ -22,10 +22,10 @@ services:
     command: bash -c "python run_config.py && hdfs namenode -format && hdfs --daemon start namenode && hdfs --daemon start datanode && yarn --daemon start resourcemanager && yarn --daemon start nodemanager && hdfs dfsadmin -safemode leave &&  hdfs dfs -mkdir /result && while true; do sleep 5; done"
     expose:
       - 22
-      - 9000
       - 8030
       - 8031
       - 8032
+      - 9000
     networks:
       - devnet
     environment:
