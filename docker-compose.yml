@@ -18,7 +18,6 @@ services:
       - spark
   spark:
     image: "quay.io/cdis/gen3-spark:feat_init"
-    #build: ../gen3-spark
     command: bash -c "python run_config.py && hdfs namenode -format && hdfs --daemon start namenode && hdfs --daemon start datanode && yarn --daemon start resourcemanager && yarn --daemon start nodemanager && hdfs dfsadmin -safemode leave &&  hdfs dfs -mkdir /result && while true; do sleep 5; done"
     expose:
       - 22
