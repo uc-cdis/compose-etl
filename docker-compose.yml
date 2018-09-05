@@ -6,7 +6,7 @@ services:
     networks:
       - devnet
     environment:
-      - DICTIONARY_URL=https://s3.amazonaws.com/dictionary-artifacts/ndhdictionary/3.1.12/schema.json
+      - DICTIONARY_URL=https://s3.amazonaws.com/dictionary-artifacts/ndhdictionary/master/schema.json
       - ES_URL=elasticsearch
       - ES_INDEX_NAME=etl
       - HADOOP_URL=hdfs://spark:9000
