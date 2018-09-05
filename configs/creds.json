@@ -1,0 +1,6 @@
+{
+  "db_host": "host.docker.internal",
+  "db_username": "postgres",
+  "db_password": "postgres",
+  "db_database": "metadata_db"
+}
