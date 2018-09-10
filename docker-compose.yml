@@ -1,7 +1,7 @@
 version: '2'
 services:
   tube:
-    image: "quay.io/cdis/tube:feat_parser"
+    image: "quay.io/cdis/tube:master"
     command: bash -c "python run_config.py && sleep 50 && python run_import.py"
     networks:
       - devnet
