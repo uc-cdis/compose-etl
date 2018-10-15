@@ -1,5 +1,30 @@
 version: '2'
 services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.4.2
+    container_name: elasticsearch
+    environment:
+      - cluster.name=elasticsearch-cluster
+      - bootstrap.memory_lock=false
+      - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - 9200:9200
+      - 9300:9300
+    networks:
+      - devnet
+  kibana:
+    image: docker.elastic.co/kibana/kibana-oss:6.4.2
+    container_name: kibana
+    ports:
+      - 5601:5601
+    networks:
+      - devnet
+    depends_on:
+      - elasticsearch
   tube:
     image: "quay.io/cdis/tube:master"
     command: bash -c "python run_config.py && sleep 50 && python run_import.py"
@@ -17,7 +42,7 @@ services:
     depends_on:
       - spark
   spark:
-    image: "quay.io/cdis/gen3-spark:feat_init"
+    image: "quay.io/cdis/gen3-spark:master"
     command: bash -c "python run_config.py && hdfs namenode -format && hdfs --daemon start namenode && hdfs --daemon start datanode && yarn --daemon start resourcemanager && yarn --daemon start nodemanager && hdfs dfsadmin -safemode leave &&  hdfs dfs -mkdir /result && while true; do sleep 5; done"
     expose:
       - 22
