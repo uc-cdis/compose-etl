@@ -39,6 +39,7 @@ services:
     volumes:
       - ./configs/creds.json:/usr/share/gen3/tube/creds.json
       - ./configs/etlMapping.yaml:/usr/share/gen3/tube/etlMapping.yaml
+      - ./configs/user.yaml:/usr/share/gen3/tube/user.yaml
     depends_on:
       - spark
   spark:
