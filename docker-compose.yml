@@ -27,7 +27,7 @@ services:
       - elasticsearch
   tube:
     image: "quay.io/cdis/tube:master"
-    command: bash -c "python run_config.py && sleep 50 && python run_import.py"
+    command: bash -c "python run_config.py && sleep 50 && python run_etl.py"
     networks:
       - devnet
     environment:
