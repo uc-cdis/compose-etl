@@ -40,6 +40,8 @@ services:
       - ./configs/creds.json:/usr/share/gen3/tube/creds.json
       - ./configs/etlMapping.yaml:/usr/share/gen3/tube/etlMapping.yaml
       - ./configs/user.yaml:/usr/share/gen3/tube/user.yaml
+      - ./configs/aws_creds.json:/usr/share/gen3/tube/aws_creds.json
+      - ./configs/indexd_creds.json:/usr/share/gen3/tube/indexd_creds.json
     depends_on:
       - spark
   spark:
