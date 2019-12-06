@@ -1,0 +1,7 @@
+{
+  "aws_access_key_id": "GEN3GEN3GEN3GEN3",
+  "aws_secret_access_key": "foobarfoobarfoobarbaz",
+  "s3_archive_bucket_name": "bucket-for-archives-here",
+  "s3_archive_bucket_region_name": "us-west-2-or-wherever",
+  "s3_archive_dir": "archive"
+}
