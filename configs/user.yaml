@@ -39,7 +39,7 @@ rbac:
               - name: jenkins
         - name: workspace
           description: jupyter notebooks
- 
+
     roles:
         - id: 'file_uploader'
           description: 'can upload data files'
