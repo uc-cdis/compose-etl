@@ -99,4 +99,3 @@ mappings:
         path: read_groups.aliquots.samples.subjects
       - name: submitted_somatic_mutation
         path: read_groups.aliquots.samples.subjects
-
