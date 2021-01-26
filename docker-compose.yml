@@ -42,6 +42,8 @@ services:
       - ./configs/settings.yaml:/usr/share/gen3/tube/settings.yaml
       - ./configs/analyzers.yaml:/usr/share/gen3/tube/analyzers.yaml
       - ./configs/user.yaml:/usr/share/gen3/tube/user.yaml
+      - ./configs/aws_creds.json:/usr/share/gen3/tube/aws_creds.json
+      - ./configs/indexd_creds.json:/usr/share/gen3/tube/indexd_creds.json
     depends_on:
       - spark
   spark:
