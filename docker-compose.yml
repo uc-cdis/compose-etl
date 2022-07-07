@@ -26,7 +26,7 @@ services:
     depends_on:
       - elasticsearch
   tube:
-    image: "quay.io/cdis/tube:master"
+    build: ../tube
     command: bash -c "python run_config.py && sleep 50 && python run_etl.py"
     networks:
       - devnet
@@ -43,6 +43,8 @@ services:
       - ./configs/settings.yaml:/usr/share/gen3/tube/settings.yaml
       - ./configs/analyzers.yaml:/usr/share/gen3/tube/analyzers.yaml
       - ./configs/user.yaml:/usr/share/gen3/tube/user.yaml
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     depends_on:
       - spark
   spark:
