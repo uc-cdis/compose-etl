@@ -26,7 +26,7 @@ services:
     depends_on:
       - elasticsearch
   tube:
-    build: ../tube
+    image: "quay.io/cdis/tube:master"
     command: bash -c "python run_config.py && sleep 50 && python run_etl.py"
     networks:
       - devnet
