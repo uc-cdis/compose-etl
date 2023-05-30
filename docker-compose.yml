@@ -1,12 +1,16 @@
 version: '2'
 services:
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.4.2
+    image: docker.elastic.co/elasticsearch/elasticsearch-oss:7.10.0
     container_name: elasticsearch
     environment:
       - cluster.name=elasticsearch-cluster
       - bootstrap.memory_lock=false
-      - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
+      - ES_JAVA_OPTS=-Xms1g -Xmx1g
+      - discovery.type=single-node
+      - network.host=0.0.0.0
+      - http.port=9200
+      - xpack.security.enabled=false
     ulimits:
       memlock:
         soft: -1
@@ -17,7 +21,7 @@ services:
     networks:
       - devnet
   kibana:
-    image: docker.elastic.co/kibana/kibana-oss:6.4.2
+    image: docker.elastic.co/kibana/kibana-oss:7.10.0
     container_name: kibana
     ports:
       - 5601:5601
