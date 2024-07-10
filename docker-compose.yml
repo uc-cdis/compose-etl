@@ -40,6 +40,13 @@ services:
       - HADOOP_URL=hdfs://spark:9000
       - HADOOP_HOST=spark
       - LOG_LEVEL=WARN
+      - SPARK_DRIVER_HOST=tube
+      - CORE_CONF_fs_defaultFS=hdfs://spark:9000
+      - CLUSTER_NAME=gen3
+    expose:
+      - 4040
+    ports:
+      - 4040:4040
     volumes:
       - ./configs/creds.json:/usr/share/gen3/tube/creds.json
       - ./configs/etlMapping.yaml:/usr/share/gen3/tube/etlMapping.yaml
