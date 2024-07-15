@@ -30,7 +30,7 @@ services:
       - elasticsearch
   tube:
     image: "quay.io/cdis/tube:master"
-    command: bash -c "python run_config.py && sleep 50 && python run_etl.py"
+    entrypoint: bash -c "/entrypoint.sh && sleep 50 && python run_etl.py"
     networks:
       - devnet
     environment:
@@ -40,6 +40,13 @@ services:
       - HADOOP_URL=hdfs://spark:9000
       - HADOOP_HOST=spark
       - LOG_LEVEL=WARN
+      - SPARK_DRIVER_HOST=localhost
+      - CORE_CONF_fs_defaultFS=hdfs://spark:9000
+      - CLUSTER_NAME=gen3
+    expose:
+      - 4040
+    ports:
+      - 4040:4040
     volumes:
       - ./configs/creds.json:/usr/share/gen3/tube/creds.json
       - ./configs/etlMapping.yaml:/usr/share/gen3/tube/etlMapping.yaml
@@ -51,7 +58,7 @@ services:
     depends_on:
       - spark
   spark:
-    image: "quay.io/cdis/gen3-spark:master"
+    image: "quay.io/cdis/gen3-spark:feat_multi-pod-hadoop-spark"
     command: bash -c "python run_config.py && hdfs namenode -format && hdfs --daemon start namenode && hdfs --daemon start datanode && yarn --daemon start resourcemanager && yarn --daemon start nodemanager && hdfs dfsadmin -safemode leave &&  hdfs dfs -mkdir /result && while true; do sleep 5; done"
     expose:
       - 22
