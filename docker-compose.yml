@@ -40,7 +40,7 @@ services:
       - HADOOP_URL=hdfs://spark:9000
       - HADOOP_HOST=spark
       - LOG_LEVEL=WARN
-      - SPARK_DRIVER_HOST=tube
+      - SPARK_DRIVER_HOST=localhost
       - CORE_CONF_fs_defaultFS=hdfs://spark:9000
       - CLUSTER_NAME=gen3
     expose:
