@@ -1,7 +1,7 @@
 version: '2'
 services:
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch-oss:7.10.0
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.14.0
     container_name: elasticsearch
     environment:
       - cluster.name=elasticsearch-cluster
@@ -20,7 +20,7 @@ services:
     networks:
       - devnet
   kibana:
-    image: docker.elastic.co/kibana/kibana-oss:7.10.0
+    image: docker.elastic.co/kibana/kibana:7.14.0
     container_name: kibana
     ports:
       - 5601:5601
@@ -64,5 +64,9 @@ services:
     environment:
       - HADOOP_URL=hdfs://0.0.0.0:9000
       - HADOOP_HOST=0.0.0.0
+      - SPARK_DRIVER_MEMORY=8g
+      - SPARK_EXECUTOR_MEMORY=8g
+      - SPARK_DAEMON_JAVA_OPTS=-Xms8g -Xmx8g
+      - SPARK_EXECUTOR_MEMORYOVERHEAD=4g
 networks:
   devnet:
