@@ -64,9 +64,9 @@ services:
     environment:
       - HADOOP_URL=hdfs://0.0.0.0:9000
       - HADOOP_HOST=0.0.0.0
-      - SPARK_DRIVER_MEMORY=8g
-      - SPARK_EXECUTOR_MEMORY=8g
-      - SPARK_DAEMON_JAVA_OPTS=-Xms8g -Xmx8g
+      - SPARK_DRIVER_MEMORY=16g
+      - SPARK_EXECUTOR_MEMORY=16g
+      - SPARK_DAEMON_JAVA_OPTS=-Xms16g -Xmx16g
       - SPARK_EXECUTOR_MEMORYOVERHEAD=4g
 networks:
   devnet:
